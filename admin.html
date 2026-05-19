@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Exam System</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <div class="login-overlay" id="login-section">
+        <div class="login-card">
+            <div class="icon-circle"><i class="fas fa-user-shield"></i></div>
+            <h2>Admin Portal</h2>
+            <p>Please enter your credentials to continue</p>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="pass" placeholder="Enter Password">
+                <button type="button" class="toggle-btn" onclick="togglePass()"><i class="far fa-eye" id="eye-icon"></i></button>
+            </div>
+            <button class="login-btn" onclick="login()">Access Dashboard</button>
+            <a href="index.html" class="back-home">Return to Website</a>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard-wrapper" style="display:none;">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-university"></i> <span>ExamAdmin</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#" onclick="searchTable()"><i class="fas fa-users"></i> Students</a></li>
+                <li><a href="#" onclick="clearDB()" class="danger-link"><i class="fas fa-trash-alt"></i> Clear Database</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search roll no or name...">
+                </div>
+                <div class="admin-profile">
+                    <span>Welcome, SuperAdmin</span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=4e73df&color=fff" alt="Profile">
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <h2>Student Records</h2>
+                <div class="table-container">
+                    <table id="studentTableWrapper">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Roll Number</th>
+                                <th>Assigned Exam</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTable">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div style="position: absolute; left: -9999px;">
+        <div id="ticket-template" style="width: 650px; padding: 30px; background: white; border: 5px solid #333; box-sizing: border-box; font-family: sans-serif;">
+            <div style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px;">
+                <h1 style="margin: 0; font-size: 24px;">UNIVERSITY EXAMINATION AUTHORITY</h1>
+                <p style="margin: 5px 0; font-weight: bold;">OFFICIAL HALL TICKET</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div id="ticket-info" style="font-size: 16px; line-height: 2.2;"></div>
+                <div style="text-align: center; border: 1px solid #ccc; padding: 10px;">
+                    <div id="qrcode"></div>
+                    <p style="font-size: 10px; margin-top: 5px;">SECURE VERIFICATION</p>
+                </div>
+            </div>
+            <div style="margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <p><b>Validity:</b> 2025-26 Session</p>
+                    <p><b>Issue Date:</b> <span id="issue-date"></span></p>
+                </div>
+                <div style="text-align: center; border-top: 1px solid #000; width: 200px; padding-top: 5px;">
+                    <p style="font-size: 12px; font-weight: bold;">Controller of Exams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

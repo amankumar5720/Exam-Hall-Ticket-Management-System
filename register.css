@@ -1,0 +1,118 @@
+/* Styling for the Registration Page */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* Background Animation Keyframes */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Box Design */
+.box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: boxAppear 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Entrance Animation for the Box */
+@keyframes boxAppear {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Home Icon Styling */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.home-icon:hover {
+    color: #e73c7e;
+    transform: translateX(-3px);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Input and Select Styling */
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    display: inline-block;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: 0.3s ease;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #23a6d5;
+    box-shadow: 0 0 8px rgba(35, 166, 213, 0.3);
+}
+
+/* Submit Button Styling & Animation */
+button {
+    width: 100%;
+    background: linear-gradient(to right, #23a6d5, #23d5ab);
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.4s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: linear-gradient(to right, #e73c7e, #ee7752);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 60, 126, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Subtle responsiveness */
+@media (max-width: 480px) {
+    .box {
+        width: 85%;
+        padding: 25px;
+    }
+}
